@@ -34,12 +34,6 @@ Here is the terminal dump.
 
 
 ```{r, engine='bash', count_lines}
-[henry@Archie mappyBase]$ npm install --save @ionic-native/google-maps
-ionic-hello-world@ /home/henry/Projects/mappyBase
-└── @ionic-native/google-maps@3.4.4 
-
-npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules/chokidar/node_modules/fsevents):
-npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
 [henry@Archie mappyBase]$ ionic run android --device
 > ionic-hello-world@ ionic:build /home/henry/Projects/mappyBase
 > ionic-app-scripts build "--device"
