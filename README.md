@@ -329,7 +329,7 @@ I change the versions for gms play services to the latest with `+`.
 It now looks like this:
 
 ```{r, engine='gradle', count_lines}
-    dependencies {
+dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     debugCompile(project(path: "CordovaLib", configuration: "debug"))
@@ -346,4 +346,31 @@ It now looks like this:
 Because running `ionic run android --device` rebuilds the gradle file, we have to run gradle on itself. I use Android studio and just press run. 
 Going through Android studio I can now build the app with both plugins!
 
-We have to find a better solution. Editing some ionic config.
+We have to find a better solution....
+
+To specify the depency version a place that is not overwritten, make a new file called `build-extras.gradle` and put it in the `platforms/android/`-folder.
+
+Content of `build-extras.gradle`:
+
+```{r, engine='gradle', count_lines}
+dependencies {
+    compile "com.google.android.gms:play-services-maps:+"
+    compile "com.google.android.gms:play-services-location:+"
+}
+```
+
+Now we have a new error message complaining about the gradle version. Lets specify what gradle version to use in the terminal:
+
+    export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL="https\://services.gradle.org/distributions/gradle-3.3-all.zip"
+
+The app now build in the Terminal using the Ionic CLI!
+
+But when opening a new terminal session, the specified gradle version to use in the new session would not be correct.
+Let's make it permanent by adding the export variable to your `.bashrc`-file.
+In the terminal:
+
+    cd ~ && echo 'export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL="https\://services.gradle.org/distributions/gradle-3.3-all.zip"' >> ~/.bashrc
+
+ps. you could also just edit `.bashrc` in any text-editor if you want to.
+
+Now the project should build also next time you reboot your computer!
