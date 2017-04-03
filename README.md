@@ -326,3 +326,30 @@ Execution failed for task ':compileDebugJavaWithJavac'.
 Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
 
 ```
+
+It looks like the gradle config is off...
+Hypotesis: the plugins use different versions of gms and it looks for a package that is not in that version or something...
+If I manually edit the `build.gradle` in the android platorm folder, I can specify the same version for both plugins.
+
+I change the versions for gms play services to the latest with `+`.
+It now looks like this:
+
+```{r, engine='gradle', count_lines}
+    dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+    // SUB-PROJECT DEPENDENCIES START
+    debugCompile(project(path: "CordovaLib", configuration: "debug"))
+    releaseCompile(project(path: "CordovaLib", configuration: "release"))
+    compile "com.google.firebase:firebase-core:+"
+    compile "com.google.firebase:firebase-messaging:+"
+    compile "com.google.firebase:firebase-crash:+"
+    compile "com.google.firebase:firebase-config:+"
+    compile "com.google.android.gms:play-services-maps:+"
+    compile "com.google.android.gms:play-services-location:+"
+    // SUB-PROJECT DEPENDENCIES END
+}
+```
+Because running `ionic run android --device` rebuilds the gradle file, we have to run gradle on itself. I use Android studio and just press run. 
+Going through Android studio I can now build the app with both plugins!
+
+We have to find a better solution. Editing some ionic config.
