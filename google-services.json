@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "535684569100",
+    "firebase_url": "https://mappybase.firebaseio.com",
+    "project_id": "mappybase",
+    "storage_bucket": "mappybase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535684569100:android:7cd7f87f7c2f4972",
+        "android_client_info": {
+          "package_name": "com.ionicframework.mappybase280602"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535684569100-1inla15lsnql8steb3lirufj8a72ntm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZbePNST8afh3jg1p05bssWq8F0mgqZaY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
